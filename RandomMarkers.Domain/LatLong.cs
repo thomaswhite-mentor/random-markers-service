@@ -32,9 +32,9 @@ namespace RandomMarkers.Domain
                 float longitude = float.Parse(latLong.Split(',')[1].Trim(), CultureInfo.InvariantCulture);
                 return Result.Ok(new LatLong(latitude, longitude));
             }
-            catch
+            catch(Exception e)
             {
-                return Result.Fail<LatLong>("location can't be empty");
+                return Result.Fail<LatLong>(e.Message);
             }
         }
     }
